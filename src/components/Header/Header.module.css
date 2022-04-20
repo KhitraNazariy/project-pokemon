@@ -1,0 +1,60 @@
+.wrap {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.50) 0 54px 55px,
+    rgba(0, 0, 0, 0.12) 0 -12px 30px,
+    rgba(0, 0, 0, 0.12) 0 4px 6px,
+    rgba(0, 0, 0, 0.17) 0 12px 13px,
+    rgba(0, 0, 0, 0.09) 0 -3px 5px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    align-items: center;
+}
+
+
+.title {
+    width: 200px;
+}
+
+
+.navWrap {
+    display: flex;
+    column-gap: 50px;
+    margin-right: 200px;
+}
+
+
+.navWrap a {
+    font-size: 24px;
+    text-decoration: none;
+    box-sizing: border-box;
+    position: relative;
+}
+
+
+.navWrap a::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: #1C2733;
+    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+    .navWrap a:hover::before{
+        left: 0;
+        right: auto;
+        width: 100%;
+    }
+}
+
+
+.navWrap a[class='active'] {
+    text-decoration: underline;
+}
