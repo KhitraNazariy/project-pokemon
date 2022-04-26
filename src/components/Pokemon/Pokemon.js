@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {Link} from "react-router-dom";
 
 import css from './Pokemon.module.css';
 import {pokemonService} from "../../services/pokemon.service";
@@ -12,10 +13,10 @@ const Pokemon = ({pokemon:{name}}) => {
     }, [])
 
     return (
-        <div className={css.pokemonCard}>
+        <Link to={`/pokemon/${name}`} state={pok} className={css.pokemonCard}>
             <div className={css.pokemonImgBackground}><img src={pok?.sprites.front_default} alt={name}/></div>
             <div>{pok?.name}</div>
-        </div>
+        </Link>
     );
 };
 

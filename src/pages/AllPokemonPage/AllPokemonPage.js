@@ -14,7 +14,6 @@ const AllPokemonPage = () => {
 
     const limit = 20;
     const allPages = Math.ceil(count / limit);
-    console.log(allPages)
 
     const dispatch = useDispatch();
 
@@ -37,18 +36,23 @@ const AllPokemonPage = () => {
                     setOffset(offset - 20);
                     setPage(page - 1);
 
+                    document.documentElement.scrollTop = 0;
+
                 }}>prev</button>
 
                 <div className={css.page}>{page}</div>
 
                 <button onClick={() => {
 
-                    if (page >= 57) {
+                    if (page >= allPages) {
                         return setOffset(offset);
                     }
 
                     setOffset(offset + 20);
                     setPage(page + 1);
+
+                    document.documentElement.scrollTop = 0;
+
                 }}>next</button>
             </div>
         </div>
