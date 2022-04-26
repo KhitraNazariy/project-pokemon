@@ -4,18 +4,48 @@ a {
 
 
 .pokemonCard {
-    width: 23%;
-    height: 200px;
+    width: 420px;
+    height: 130px;
+    margin: 10px 0;
+    padding: 0 20px;
+    box-sizing: border-box;
     background-color: var(--card-background-color);
     color: var(--color);
     transition: background-color 500ms linear;
-    border-radius: 15px;
+    border-radius: 10px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     font-size: 20px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+
+.pokemonCardContent {
+
+}
+
+
+.number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: var(--background-color);
+    color: var(--card-background-color);
+    top: -32px;
+    left: -35px;
+}
+
+
+.types {
+    display: flex;
+    column-gap: 10px;
+    font-size: 15px;
+    margin-top: 10px;
 }
 
 

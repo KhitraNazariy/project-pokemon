@@ -12,7 +12,7 @@ const AllPokemonPage = () => {
     const [offset, setOffset] = useState(0);
     const [page, setPage] = useState(1);
 
-    const limit = 20;
+    const limit = 21;
     const allPages = Math.ceil(count / limit);
 
     const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const AllPokemonPage = () => {
                         return setOffset(offset);
                     }
 
-                    setOffset(offset - 20);
+                    setOffset(offset - 21);
                     setPage(page - 1);
 
                     document.documentElement.scrollTop = 0;
@@ -48,7 +48,7 @@ const AllPokemonPage = () => {
                         return setOffset(offset);
                     }
 
-                    setOffset(offset + 20);
+                    setOffset(offset + 21);
                     setPage(page + 1);
 
                     document.documentElement.scrollTop = 0;
