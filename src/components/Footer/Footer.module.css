@@ -1,0 +1,17 @@
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    height: 70px;
+    background-color: var(--card-background-color);
+    transition: background-color 500ms linear;
+    box-shadow: rgb(0 0 0 / 50%) 0 54px 55px, rgb(0 0 0 / 12%) 0 -12px 30px, rgb(0 0 0 / 12%) 0 4px 6px, rgb(0 0 0 / 17%) 0 12px 13px, rgb(0 0 0 / 9%) 0 -3px 5px;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+
+.footer img {
+    margin-right: 50px;
+    height: 40px;
+}
