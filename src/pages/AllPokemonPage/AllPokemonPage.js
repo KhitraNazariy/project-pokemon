@@ -7,14 +7,19 @@ import {Pokemon} from "../../components";
 
 const AllPokemonPage = () => {
 
-    const {pokemons:{results}} = useSelector(state => state['pokemonReducer']);
+    const {pokemons:{results, count}} = useSelector(state => state['pokemonReducer']);
 
     const [offset, setOffset] = useState(0);
+    const [page, setPage] = useState(1);
+
+    const limit = 20;
+    const allPages = Math.ceil(count / limit);
+    console.log(allPages)
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAllPokemon({offset}));
+        dispatch(getAllPokemon({limit, offset}));
     }, [offset])
 
     return (
@@ -22,12 +27,28 @@ const AllPokemonPage = () => {
             <div className={css.pokemonWrap}>
                 {results && results.map(pokemon => <Pokemon key={pokemon.name} pokemon={pokemon}/>)}
             </div>
-            <div>
+            <div className={css.pagination}>
                 <button onClick={() => {
-                    setOffset(offset - 20)
+
+                    if (page <= 1) {
+                        return setOffset(offset);
+                    }
+
+                    setOffset(offset - 20);
+                    setPage(page - 1);
+
                 }}>prev</button>
+
+                <div className={css.page}>{page}</div>
+
                 <button onClick={() => {
-                    setOffset(offset + 20)
+
+                    if (page >= 57) {
+                        return setOffset(offset);
+                    }
+
+                    setOffset(offset + 20);
+                    setPage(page + 1);
                 }}>next</button>
             </div>
         </div>
