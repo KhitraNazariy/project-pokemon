@@ -28,7 +28,8 @@ footer, header, hgroup, menu, nav, section {
 
 body {
     line-height: 1;
-    background-color: #1C2733;
+    background-color: var(--background-color);
+    transition: background-color 200ms linear;
 }
 
 ol, ul {
@@ -42,4 +43,24 @@ blockquote, q {
 table {
     border-collapse: collapse;
     border-spacing: 0;
+}
+
+html[data-theme='dark'] {
+    --background-color: #1C2733;
+    --color: #1C2733;
+    --card-background-color: white;
+    --btn-background-color: #1C2733;
+    --btn-hover-background-color: white;
+    --btn-color: white;
+    --btn-hover-color: #1C2733;
+}
+
+html[data-theme='light'] {
+    --background-color: white;
+    --color: white;
+    --card-background-color: #1C2733;
+    --btn-background-color: white;
+    --btn-hover-background-color: #1C2733;
+    --btn-color: #1C2733;
+    --btn-hover-color: white;
 }

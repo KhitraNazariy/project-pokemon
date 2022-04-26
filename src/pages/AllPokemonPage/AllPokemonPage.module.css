@@ -1,0 +1,7 @@
+.pokemonWrap {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: space-between;
+    gap: 20px;
+}
