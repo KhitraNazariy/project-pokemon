@@ -11,8 +11,6 @@ const Pokemon = ({pokemon:{name}}) => {
         pokemonService.getPokemonByName(name).then(value => setPok(value))
     }, [])
 
-    console.log(pok)
-
     return (
         <div className={css.pokemonCard}>
             <div className={css.pokemonImgBackground}><img src={pok?.sprites.front_default} alt={name}/></div>

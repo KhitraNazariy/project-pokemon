@@ -9,9 +9,9 @@ const initialState = {
 
 export const getAllPokemon = createAsyncThunk(
     'pokemonSlice/getAllPokemon',
-    async (_, {rejectWithValue}) => {
+    async ({offset}, {rejectWithValue}) => {
         try {
-            return await pokemonService.getAll();
+            return await pokemonService.getAll(offset);
         } catch (e) {
             return rejectWithValue(e.message);
         }
