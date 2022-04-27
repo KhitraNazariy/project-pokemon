@@ -3,15 +3,13 @@ import {Routes, Route} from "react-router-dom";
 
 import css from './App.module.css';
 import {Layout} from "./components";
-import {AboutPage, AllPokemonPage, HomePage, PokemonDetailsPage, SearchPage} from "./pages";
+import {AllPokemonPage, PokemonDetailsPage, SearchPage} from "./pages";
 
 const App = () => {
     return (
         <div className={css.appContainer}>
             <Routes>
                 <Route path={'/'} element={<Layout/>}>
-                    <Route index element={<HomePage/>}/>
-                    <Route path={'about'} element={<AboutPage/>}/>
                     <Route path={'pokemons'} element={<AllPokemonPage/>}/>
                     <Route path={'pokemon/:name'} element={<PokemonDetailsPage/>}/>
                     <Route path={'search'} element={<SearchPage/>}/>
