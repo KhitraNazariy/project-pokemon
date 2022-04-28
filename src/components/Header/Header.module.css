@@ -1,6 +1,7 @@
 .wrap {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: var(--card-background-color);
     transition: background-color 500ms linear;
     box-shadow: rgba(0, 0, 0, 0.50) 0 54px 55px,
@@ -11,7 +12,6 @@
     margin: 10px;
     padding: 10px;
     border-radius: 15px;
-    align-items: center;
 }
 
 
@@ -23,13 +23,15 @@
 .headerWrap {
     display: flex;
     margin-right: 40px;
-    column-gap: 200px;
+    column-gap: 150px;
+    align-items: center;
 }
 
 
 .nav {
     display: flex;
-    column-gap: 50px;
+    align-items: center;
+    column-gap: 100px;
 }
 
 

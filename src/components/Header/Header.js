@@ -4,6 +4,7 @@ import {Link, NavLink} from "react-router-dom";
 import Title from '../../img/title.png';
 import css from './Header.module.css';
 import {useTheme} from "../../hooks";
+import {Search} from "../Search/Search";
 
 const Header = () => {
 
@@ -25,7 +26,9 @@ const Header = () => {
             <div className={css.headerWrap}>
                 <div className={css.nav}>
                     <NavLink to={'/pokemons'}>All pokemon</NavLink>
-                    <NavLink to={'/search'}>Search</NavLink>
+
+                    <Search/>
+
                 </div>
                 <div className={css.navBtn}>
                     <button className={css.lightBtn} onClick={handleLightThemeClick}>Light</button>
