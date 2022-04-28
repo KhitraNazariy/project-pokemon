@@ -3,6 +3,8 @@ import {pokemonService} from "../services/pokemon.service";
 
 const initialState = {
     pokemons: [],
+    pokemonByName: null,
+    searchName: '',
     status: null,
     error: null
 }
@@ -18,9 +20,25 @@ export const getAllPokemon = createAsyncThunk(
     }
 );
 
+export const getPokemonByName = createAsyncThunk(
+    'pokemonSlice/getPokemonByName',
+    async ({name}, {rejectWithValue}) => {
+        try {
+            return await pokemonService.getPokemonByName(name);
+        } catch (e) {
+            return rejectWithValue(e.message)
+        }
+    }
+);
+
 const pokemonSlice = createSlice({
     name: 'pokemonSlice',
     initialState,
+    reducers: {
+        addSearchName: (state, action) => {
+            state.searchName = action.payload.name
+        }
+    },
     extraReducers: {
         [getAllPokemon.pending]: (state) => {
             state.status = 'pending';
@@ -33,10 +51,29 @@ const pokemonSlice = createSlice({
         [getAllPokemon.rejected]: (state, action) => {
             state.status = 'rejected';
             state.error = action.payload
+        },
+
+
+        [getPokemonByName.pending]: (state) => {
+            state.status = 'pending';
+            state.error = null;
+        },
+        [getPokemonByName.fulfilled]: (state, action) => {
+            state.status = 'fulfilled';
+            state.pokemonByName = action.payload
+        },
+        [getPokemonByName.rejected]: (state, action) => {
+            state.status = 'rejected';
+            state.error = action.payload
         }
+
+
+
     }
 });
 
 const pokemonReducer = pokemonSlice.reducer;
+
+export const {addSearchName} = pokemonSlice.actions;
 
 export default pokemonReducer;

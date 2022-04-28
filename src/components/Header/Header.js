@@ -1,12 +1,19 @@
 import React from 'react';
 import {Link, NavLink} from "react-router-dom";
+import { GoSearch } from "react-icons/go";
+import {useForm} from "react-hook-form";
+import {useDispatch} from "react-redux";
 
 import Title from '../../img/title.png';
 import css from './Header.module.css';
 import {useTheme} from "../../hooks";
-import {Search} from "../Search/Search";
+import {addSearchName} from "../../store";
 
 const Header = () => {
+
+    const {register,handleSubmit,reset} = useForm();
+
+    const dispatch = useDispatch();
 
     const {theme, setTheme} = useTheme();
 
@@ -18,6 +25,11 @@ const Header = () => {
         setTheme('light')
     }
 
+    const submit = (name) => {
+        dispatch(addSearchName(name))
+        reset()
+    }
+
     return (
         <div className={css.wrap}>
             <div>
@@ -27,7 +39,17 @@ const Header = () => {
                 <div className={css.nav}>
                     <NavLink to={'/pokemons'}>All pokemon</NavLink>
 
-                    <Search/>
+                    <div className={css.wrapForm}>
+                        <form className={css.search}>
+                            <input className={css.searchTerm}
+                                   type="text"
+                                   placeholder="Search pokemon"
+                                   {...register('name')}/>
+                            <button className={css.searchButton} onClick={handleSubmit(submit)}>
+                                <Link to={'search'}><GoSearch/></Link>
+                            </button>
+                        </form>
+                    </div>
 
                 </div>
                 <div className={css.navBtn}>
