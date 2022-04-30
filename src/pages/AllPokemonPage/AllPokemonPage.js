@@ -25,7 +25,6 @@ const AllPokemonPage = () => {
 
     return (
         <div>
-            {/*{status === 'pending' && <Loader/>}*/}
             {error && <h2 className={css.error}>Oops page is temporarily unavailable</h2>}
             <div className={css.pokemonWrap}>
                 {results && results.map(pokemon => <Pokemon key={pokemon.name} pokemon={pokemon}/>)}
