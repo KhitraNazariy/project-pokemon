@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 
@@ -14,7 +14,7 @@
 .wrapForm {
     display: flex;
     justify-content: center;
-    margin: 30px 0;
+    margin: 20px 0;
 }
 
 

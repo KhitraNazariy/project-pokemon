@@ -1,9 +1,16 @@
 import React from 'react';
 
+import './Loader.css'
+
 const Loader = () => {
     return (
         <div>
-            Loader
+            <figure>
+                <div></div><div></div>
+                <div></div><div></div>
+                <div></div><div></div>
+                <div></div><div></div>
+            </figure>
         </div>
     );
 };

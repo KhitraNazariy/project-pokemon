@@ -1,17 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useSelector} from "react-redux";
 import {Doughnut} from "react-chartjs-2";
 import {ArcElement, Chart as ChartJS, Legend, Tooltip} from "chart.js";
 
 import css from '../css/PokemonDetails.module.css';
+import {Loader} from "../../components";
 
 const SearchPokemon = () => {
 
     ChartJS.register(ArcElement, Tooltip, Legend);
 
     const {searchPokemon, status, error} = useSelector(state => state['pokemonReducer']);
-    // const [errorRequest, setErrorRequest] = useState('');
-
 
     const stats = searchPokemon?.stats.map(item => item.stat.name[0].toUpperCase() + item.stat.name.slice(1).replace('-', ' '));
 
@@ -46,6 +45,7 @@ const SearchPokemon = () => {
 
     return (
         <div>
+            {status === 'pending' && <Loader/>}
             {error && <h2 className={css.error}>There are no Pokemon with this name</h2>}
             {searchPokemon && (
                 <div className={css.pokemonDetailsWrap}>

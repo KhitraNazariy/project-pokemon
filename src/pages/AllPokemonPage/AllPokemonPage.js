@@ -3,11 +3,11 @@ import {useDispatch, useSelector} from "react-redux";
 
 import css from './AllPokemonPage.module.css';
 import {getAllPokemon} from "../../store";
-import {Pokemon} from "../../components";
+import {Loader, Pokemon} from "../../components";
 
 const AllPokemonPage = () => {
 
-    const {pokemons: {results, count}} = useSelector(state => state['pokemonReducer']);
+    const {pokemons: {results, count}, error, status} = useSelector(state => state['pokemonReducer']);
     const [offset, setOffset] = useState(0);
     const [page, setPage] = useState(1);
     const dispatch = useDispatch();
@@ -15,15 +15,18 @@ const AllPokemonPage = () => {
     const limit = 21;
     const allPages = Math.ceil(count / limit);
 
-
-
     useEffect(() => {
         dispatch(getAllPokemon({limit, offset}));
     }, [offset])
 
+    if (status === 'pending') {
+        return <Loader/>
+    }
 
     return (
         <div>
+            {/*{status === 'pending' && <Loader/>}*/}
+            {error && <h2 className={css.error}>Oops page is temporarily unavailable</h2>}
             <div className={css.pokemonWrap}>
                 {results && results.map(pokemon => <Pokemon key={pokemon.name} pokemon={pokemon}/>)}
             </div>
