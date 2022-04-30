@@ -1,21 +1,13 @@
 import React from 'react';
 import {Link, NavLink} from "react-router-dom";
-import { GoSearch } from "react-icons/go";
-import {useForm} from "react-hook-form";
-import {useDispatch} from "react-redux";
 
 import Title from '../../img/title.png';
 import css from './Header.module.css';
 import {useTheme} from "../../hooks";
-import {addSearchName} from "../../store";
 
 const Header = () => {
 
-    const {register,handleSubmit,reset} = useForm();
-
-    const dispatch = useDispatch();
-
-    const {theme, setTheme} = useTheme();
+    const {setTheme} = useTheme();
 
     const handleDarkThemeClick = () => {
         setTheme('dark')
@@ -23,11 +15,6 @@ const Header = () => {
 
     const handleLightThemeClick = () => {
         setTheme('light')
-    }
-
-    const submit = (name) => {
-        dispatch(addSearchName(name))
-        reset()
     }
 
     return (
@@ -38,19 +25,7 @@ const Header = () => {
             <div className={css.headerWrap}>
                 <div className={css.nav}>
                     <NavLink to={'/pokemons'}>All pokemon</NavLink>
-
-                    <div className={css.wrapForm}>
-                        <form className={css.search}>
-                            <input className={css.searchTerm}
-                                   type="text"
-                                   placeholder="Search pokemon"
-                                   {...register('name')}/>
-                            <button className={css.searchButton} onClick={handleSubmit(submit)}>
-                                <Link to={'search'}><GoSearch/></Link>
-                            </button>
-                        </form>
-                    </div>
-
+                    <NavLink to={'search'}>Search</NavLink>
                 </div>
                 <div className={css.navBtn}>
                     <button className={css.lightBtn} onClick={handleLightThemeClick}>Light</button>

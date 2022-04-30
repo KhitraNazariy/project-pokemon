@@ -1,10 +1,10 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
 import {pokemonService} from "../services/pokemon.service";
 
 const initialState = {
     pokemons: [],
-    pokemonByName: null,
-    searchName: '',
+    searchPokemon: null,
     status: null,
     error: null
 }
@@ -24,7 +24,7 @@ export const getPokemonByName = createAsyncThunk(
     'pokemonSlice/getPokemonByName',
     async ({name}, {rejectWithValue}) => {
         try {
-            return await pokemonService.getPokemonByName(name);
+            return await pokemonService.getPokemonByName(name)
         } catch (e) {
             return rejectWithValue(e.message)
         }
@@ -60,14 +60,12 @@ const pokemonSlice = createSlice({
         },
         [getPokemonByName.fulfilled]: (state, action) => {
             state.status = 'fulfilled';
-            state.pokemonByName = action.payload
+            state.searchPokemon = action.payload
         },
         [getPokemonByName.rejected]: (state, action) => {
             state.status = 'rejected';
             state.error = action.payload
         }
-
-
 
     }
 });

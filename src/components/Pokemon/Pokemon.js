@@ -6,7 +6,7 @@ import {pokemonService} from "../../services/pokemon.service";
 
 const Pokemon = ({pokemon:{name}}) => {
 
-    const [pok, setPok] = useState();
+    const [pok, setPok] = useState(null);
 
     useEffect(() => {
         pokemonService.getPokemonByName(name).then(value => setPok(value))

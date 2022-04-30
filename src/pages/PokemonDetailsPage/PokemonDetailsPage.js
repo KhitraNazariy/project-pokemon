@@ -3,14 +3,14 @@ import {useLocation, useParams} from "react-router-dom";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-import css from './PokemonDetailsPage.module.css';
+import css from '../css/PokemonDetails.module.css';
+
 
 const PokemonDetailsPage = () => {
 
     ChartJS.register(ArcElement, Tooltip, Legend);
 
     const name = useParams();
-
     const {state:pokemon} = useLocation();
 
     const stats = pokemon.stats.map(item => item.stat.name[0].toUpperCase() + item.stat.name.slice(1).replace('-', ' '));

@@ -7,19 +7,20 @@ import {Pokemon} from "../../components";
 
 const AllPokemonPage = () => {
 
-    const {pokemons:{results, count}} = useSelector(state => state['pokemonReducer']);
-
+    const {pokemons: {results, count}} = useSelector(state => state['pokemonReducer']);
     const [offset, setOffset] = useState(0);
     const [page, setPage] = useState(1);
+    const dispatch = useDispatch();
 
     const limit = 21;
     const allPages = Math.ceil(count / limit);
 
-    const dispatch = useDispatch();
+
 
     useEffect(() => {
         dispatch(getAllPokemon({limit, offset}));
     }, [offset])
+
 
     return (
         <div>
@@ -38,7 +39,8 @@ const AllPokemonPage = () => {
 
                     document.documentElement.scrollTop = 0;
 
-                }}>prev</button>
+                }}>prev
+                </button>
 
                 <div className={css.page}>{page}</div>
 
@@ -53,7 +55,8 @@ const AllPokemonPage = () => {
 
                     document.documentElement.scrollTop = 0;
 
-                }}>next</button>
+                }}>next
+                </button>
             </div>
         </div>
     );
