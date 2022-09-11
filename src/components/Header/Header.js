@@ -26,6 +26,8 @@ const Header = () => {
                 <div className={css.nav}>
                     <NavLink to={'/pokemons'}>All pokemon</NavLink>
                     <NavLink to={'search'}>Search</NavLink>
+                    <NavLink to={'search'}>Search</NavLink>
+                    <NavLink to={'search'}>Search</NavLink>
                 </div>
                 <div className={css.navBtn}>
                     <button className={css.lightBtn} onClick={handleLightThemeClick}>Light</button>
